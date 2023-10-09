@@ -1,5 +1,5 @@
 ## Unity Version
-2021.3.23f1
+2022.3.10f1
 
 ## Git rules
 
