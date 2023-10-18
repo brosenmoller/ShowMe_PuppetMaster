@@ -1,31 +1,15 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PickUpItems : MonoBehaviour
 {
-	[SerializeField]
-	private LayerMask pickupMask;
-
-	[SerializeField]
-	private LayerMask raftMask;
-
-	[SerializeField]
-	private Gun gun;
-
-	[SerializeField]
-	private float interactionRange = 5f;
-
-	[SerializeField]
-	private float moveForce = 250f;
-
-	[SerializeField]
-	private Transform holdParent;
-
-	[SerializeField]
-	private float smallScale;
-
-	[SerializeField]
-	private GameObject heldObject;
+	[SerializeField] private LayerMask pickupMask;
+	[SerializeField] private LayerMask raftMask;
+	[SerializeField] private Gun gun;
+	[SerializeField] private float interactionRange = 5f;
+	[SerializeField] private float moveForce = 250f;
+	[SerializeField] private Transform holdParent;
+	[SerializeField] private float smallScale;
+	[SerializeField] private GameObject heldObject;
 
 	private PlayerController player;
 

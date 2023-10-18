@@ -1,36 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-	public PlayerController owner;
-    public GameObject BulletPrefab;
-	public Camera cam;
-	[SerializeField]
-	public GunScriptableObject primaryGunData;
-    private Vector3 projectileStartVector;
-	[SerializeField]
-	private Transform projectileStart;
+    public PlayerController owner;
+    public Transform playerCamera;
+
+    [SerializeField] private GameObject BulletPrefab;
+	[SerializeField] private GunScriptableObject primaryGunData;
+	[SerializeField] private Transform projectileStart;
+	[SerializeField] private PhysicsRaft raft;
+	[SerializeField] private LayerMask shouldMoveRaftLayer;
+
+	[SerializeField] private LayerMask shouldBlockMoveRay;
+	[SerializeField] private AnimationCurve curveRaftForce;
+	[SerializeField] private int bulletsInMag;
+	[SerializeField] private float knockbackForce;
+	[SerializeField] private float knockBackUp;
+
 	private float timestamp;
-	[SerializeField]
-	private PhysicsRaft raft;
-	[SerializeField]
-	private LayerMask shouldMoveRaftLayer;
-
-	[SerializeField]
-	private LayerMask shouldBlockMoveRay;
-	[SerializeField]
-	private AnimationCurve curveRaftForce;
-
-	[SerializeField]
-	private float knockBackUp;
-	[SerializeField]
-	private float knockbackForce;
-
-	[SerializeField]
-	public int bulletsInMag;
-
+    private Vector3 projectileStartVector;
 	private int burstBulletsLeft;
 
 	private bool isTriggerPresssed;
@@ -45,22 +34,15 @@ public class Gun : MonoBehaviour
 	int bulletsInSecondary;
 
 	public Rigidbody rb;
-	// Start is called before the first frame update
-	void Start()
+
+	private void Start()
     {
 		raft = FindObjectOfType<PhysicsRaft>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
 	private void SpawnAndSetBullet()
 	{
-		Quaternion rotation = cam.transform.rotation;
+		Quaternion rotation = playerCamera.rotation;
 		Vector2 vector = new Vector2(Random.Range(0f - primaryGunData.bulletSpread.x, primaryGunData.bulletSpread.x), Random.Range(0f - primaryGunData.bulletSpread.y, primaryGunData.bulletSpread.y));
 		if (vector.magnitude > (primaryGunData.bulletSpread.x + primaryGunData.bulletSpread.y) / 2f)
 		{
@@ -111,12 +93,12 @@ public class Gun : MonoBehaviour
 		float num = 0f;
 		if (raft != null && raft.IsPlayerOnRaft)
 		{
-			Vector3 direction = cam.transform.rotation * Vector3.forward;
+			Vector3 direction = playerCamera.rotation * Vector3.forward;
 			Vector2 vector = new Vector2(direction.x, direction.z);
 			vector.Normalize();
 			Vector2 vector2 = vector * -5f;
 			float num2 = 15f;
-			if (Physics.Raycast(cam.transform.position, direction, out var hitInfo, num2, (int)shouldMoveRaftLayer + (int)shouldBlockMoveRay, QueryTriggerInteraction.Ignore) && (shouldBlockMoveRay.value & (1 << hitInfo.transform.gameObject.layer)) == 0)
+			if (Physics.Raycast(playerCamera.position, direction, out var hitInfo, num2, (int)shouldMoveRaftLayer + (int)shouldBlockMoveRay, QueryTriggerInteraction.Ignore) && (shouldBlockMoveRay.value & (1 << hitInfo.transform.gameObject.layer)) == 0)
 			{
 				num = 1f - Mathf.Clamp01(hitInfo.distance / num2);
 				num = curveRaftForce.Evaluate(num);
@@ -129,7 +111,7 @@ public class Gun : MonoBehaviour
 			}
 		}
 		rb.AddForce(Vector3.up * knockBackUp * primaryGunData.knockbackMultiplier * (1f - num));
-		rb.AddForce(-cam.transform.forward * knockbackForce * primaryGunData.knockbackMultiplier * (1f - num));
+		rb.AddForce(-playerCamera.forward * knockbackForce * primaryGunData.knockbackMultiplier * (1f - num));
 		bulletsInMag--;
 		UpdateBullets();
 		if (bulletsInMag <= 0 && !isReloading)
@@ -182,7 +164,7 @@ public class Gun : MonoBehaviour
 		}
         else
         {
-			if(timestamp + 1f / (primaryGunData.roundsPerSecond) <= Time.time && bulletsInMag == 0 && !isReloading)
+			if (timestamp + 1f / (primaryGunData.roundsPerSecond) <= Time.time && bulletsInMag == 0 && !isReloading)
             {
 				StartReload();
             }
@@ -265,7 +247,7 @@ public class Gun : MonoBehaviour
 			}
 		}
 		bulletsInMag = primaryGunData.magazineSize;
-			//StartCoroutine(UpdateGun(reload: false));
+		//StartCoroutine(UpdateGun(reload: false));
 	}
 
 }

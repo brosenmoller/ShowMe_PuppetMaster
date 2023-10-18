@@ -2,47 +2,44 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	[SerializeField] private GameObject cameraPoint;
+	[SerializeField] private float _sensitivity = 50f;
+	[SerializeField] private float _jumpForce = 550f;
 
-    public Gun gunShootHandler;
+    [SerializeField] private LayerMask _whatIsGround;
+    public Transform playerCam;
+    [SerializeField] private Gun gunShootHandler;
+    public bool isHolding;
+    public RaftUpgradePickUp raftUpgrade;
 
-    Player playerInput;
+    private Player playerInput;
 
-	Vector2 _movementInput;
-	Vector2 MovementOut;
-	Rigidbody rb;
-	[SerializeField]
-	GameObject cameraPoint;
+	private Vector2 _movementInput;
+	private Vector2 MovementOut;
+	private Rigidbody rb;
 
-	float MoveSpeed = 4500f;
-	float Multiplier = 1;
-	float MultiplierForward = 1;
-	float MaxSpeed = 3;
-	float _counterMovement = 0.175f;
-	Vector2 mag;
+	private float MoveSpeed = 4500f;
+	private float Multiplier = 1;
+	private float MultiplierForward = 1;
+	private float MaxSpeed = 3;
+	private float _counterMovement = 0.175f;
+	private Vector2 mag;
 
-	bool _isGrounded;
+	private bool _isGrounded;
 	private float characterLength = 2f;
 	private float padding = 0.01f;
 	private float maxDistanceToGround = 0.01f;
 	private float _threshold = 0.01f;
-	public LayerMask _whatIsGround;
-	public Camera playerCam;
 	private float _xRotation;
-	[SerializeField]
-	private float _sensitivity = 50f;
 	private float _sensMultiplier = 1f;
 
-	bool IsJumpPressed;
-	float _jumpPressTimestamp;
+	private bool IsJumpPressed;
+	private float _jumpPressTimestamp;
 	private float _jumpCooldown = 0.25f;
-	[SerializeField]
-	private float _jumpForce = 550f;
-	public bool isHolding;
-	public RaftUpgradePickUp raftUpgrade;
-	PickUpItems PickUpItems;
+	private PickUpItems PickUpItems;
 
-	// Start is called before the first frame update
-	void Awake()
+
+	private void Awake()
     {
 		PickUpItems = GetComponent<PickUpItems>();
 		 rb = GetComponent<Rigidbody>();
@@ -56,11 +53,11 @@ public class PlayerController : MonoBehaviour
 
 		playerInput.PlayerActions.MouseMovement.performed += ctx =>
 		{
-				Vector2 vector = ctx.ReadValue<Vector2>() * _sensitivity * Time.fixedDeltaTime * _sensMultiplier;
-				float y = playerCam.transform.localRotation.eulerAngles.y + vector.x;
+				Vector2 vector = _sensitivity * _sensMultiplier * Time.fixedDeltaTime * ctx.ReadValue<Vector2>();
+				float y = playerCam.localRotation.eulerAngles.y + vector.x;
 				_xRotation -= vector.y;
 				_xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-				playerCam.transform.localRotation = Quaternion.Euler(_xRotation, y, 0f);
+				playerCam.localRotation = Quaternion.Euler(_xRotation, y, 0f);
 				transform.localRotation = Quaternion.Euler(0f, y, 0f);
 		};
 
@@ -117,18 +114,19 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	void SetUpGun()
+	private void SetUpGun()
     {
-		gunShootHandler.cam = playerCam;
+		gunShootHandler.playerCamera = playerCam;
 		gunShootHandler.rb = rb;
 		gunShootHandler.owner = this;
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
     {
 		Debug.DrawRay(transform.position, transform.forward*3, Color.red);
     }
+
 	private void FixedUpdate()
 	{
 		if (IsJumpPressed && _isGrounded && _jumpPressTimestamp + _jumpCooldown <= Time.time)
@@ -152,25 +150,19 @@ public class PlayerController : MonoBehaviour
 	{
 		float x = _movementInput.x;
 		float y = _movementInput.y;
-		if (_movementInput.x > 0f && mag.x > MaxSpeed)
+
+		if ((_movementInput.x > 0f && mag.x > MaxSpeed) || (_movementInput.x < 0f && mag.x < -MaxSpeed))
 		{
 			x = 0f;
 		}
-		if (_movementInput.x < 0f && mag.x < -MaxSpeed)
-		{
-			x = 0f;
-		}
-		if (_movementInput.y > 0f && mag.y > MaxSpeed)
+		if ((_movementInput.y > 0f && mag.y > MaxSpeed) || (_movementInput.y < 0f && mag.y < -MaxSpeed))
 		{
 			y = 0f;
 		}
-		if (_movementInput.y < 0f && mag.y < -MaxSpeed)
-		{
-			y = 0f;
-		}
+
 		MovementOut = new Vector2(x, y);
-		rb.AddForce(transform.right * MovementOut.x * MoveSpeed * Time.fixedDeltaTime * Multiplier);
-		rb.AddForce(transform.forward * MovementOut.y * MoveSpeed * Time.fixedDeltaTime * Multiplier * MultiplierForward);
+		rb.AddForce(MovementOut.x * MoveSpeed * Multiplier * Time.fixedDeltaTime * transform.right);
+		rb.AddForce(MovementOut.y * MoveSpeed * Multiplier * MultiplierForward * Time.fixedDeltaTime * transform.forward);
 	}
 
 
@@ -189,9 +181,9 @@ public class PlayerController : MonoBehaviour
 	private void CheckGrounded()
 	{
 		float num = characterLength / 4f;
-		Vector3 position = base.transform.position;
+		Vector3 position = transform.position;
 		position.y -= num;
-		if (Physics.SphereCast(position, num - padding, -base.transform.up, out var _, padding + maxDistanceToGround, _whatIsGround))
+		if (Physics.SphereCast(position, num - padding, -transform.up, out var _, padding + maxDistanceToGround, _whatIsGround))
 		{
 			_isGrounded = true;
 		}
@@ -220,11 +212,11 @@ public class PlayerController : MonoBehaviour
 	{
 		if ((Mathf.Abs(mag.x) > _threshold && Mathf.Abs(x) < 0.05f) || (mag.x < 0f - _threshold && x > 0f) || (mag.x > _threshold && x < 0f))
 		{
-			rb.AddForce(MoveSpeed * transform.right * Time.fixedDeltaTime * (0f - mag.x) * _counterMovement);
+			rb.AddForce((0f - mag.x) * _counterMovement * MoveSpeed * Time.fixedDeltaTime * transform.right);
 		}
 		if ((Mathf.Abs(mag.y) > _threshold && Mathf.Abs(y) < 0.05f) || (mag.y < 0f - _threshold && y > 0f) || (mag.y > _threshold && y < 0f))
 		{
-			rb.AddForce(MoveSpeed * transform.forward * Time.fixedDeltaTime * (0f - mag.y) * _counterMovement);
+			rb.AddForce((0f - mag.y) * _counterMovement * MoveSpeed * Time.fixedDeltaTime * transform.forward);
 		}
 		if (Mathf.Sqrt(Mathf.Pow(rb.velocity.x, 2f) + Mathf.Pow(rb.velocity.z, 2f)) > MaxSpeed)
 		{
@@ -233,6 +225,4 @@ public class PlayerController : MonoBehaviour
 			rb.velocity = new Vector3(vector.x, y2, vector.z);
 		}
 	}
-
-
 }
