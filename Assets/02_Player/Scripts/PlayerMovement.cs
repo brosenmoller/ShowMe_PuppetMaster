@@ -49,20 +49,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) { return; }
 
-        // We are grounded, so recalculate move direction based on axes
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        Vector3 right = transform.TransformDirection(Vector3.right);
-
         Vector2 inputDirection = inputService.playerInputActions.PlayerActionMap.Walk.ReadValue<Vector2>();
         
         if (inputDirection != Vector2.zero) { IsMoving = true; }
         else { IsMoving = false; }
 
         IsSprinting = inputService.playerInputActions.PlayerActionMap.Sprint.IsPressed();
-        float curSpeedX = (IsSprinting ? runningSpeed : walkingSpeed) * inputDirection.y;
-        float curSpeedY = (IsSprinting ? runningSpeed : walkingSpeed) * inputDirection.x;
+        float forwardSpeed = (IsSprinting ? runningSpeed : walkingSpeed) * inputDirection.y;
+        float rightSpeed = (IsSprinting ? runningSpeed : walkingSpeed) * inputDirection.x;
         float movementDirectionY = moveDirection.y;
-        moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        moveDirection = (transform.forward * forwardSpeed) + (transform.right * rightSpeed);
 
         if (inputService.playerInputActions.PlayerActionMap.Jump.WasPressedThisFrame() && canMove && characterController.isGrounded)
         {

@@ -80,6 +80,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d848cbf-e808-44d4-80d3-d3ea591e6d7a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -181,6 +190,28 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveCameraY"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38d1e7cf-9527-4522-9014-4034f25f3b0a"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""830e5e7a-5d58-4454-8052-dd9b4e17b58b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -195,6 +226,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_PlayerActionMap_MoveCameraX = m_PlayerActionMap.FindAction("MoveCameraX", throwIfNotFound: true);
         m_PlayerActionMap_MoveCameraY = m_PlayerActionMap.FindAction("MoveCameraY", throwIfNotFound: true);
         m_PlayerActionMap_Pause = m_PlayerActionMap.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerActionMap_Shoot = m_PlayerActionMap.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -262,6 +294,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerActionMap_MoveCameraX;
     private readonly InputAction m_PlayerActionMap_MoveCameraY;
     private readonly InputAction m_PlayerActionMap_Pause;
+    private readonly InputAction m_PlayerActionMap_Shoot;
     public struct PlayerActionMapActions
     {
         private @PlayerActions m_Wrapper;
@@ -272,6 +305,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @MoveCameraX => m_Wrapper.m_PlayerActionMap_MoveCameraX;
         public InputAction @MoveCameraY => m_Wrapper.m_PlayerActionMap_MoveCameraY;
         public InputAction @Pause => m_Wrapper.m_PlayerActionMap_Pause;
+        public InputAction @Shoot => m_Wrapper.m_PlayerActionMap_Shoot;
         public InputActionMap Get() { return m_Wrapper.m_PlayerActionMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,6 +333,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
         }
 
         private void UnregisterCallbacks(IPlayerActionMapActions instance)
@@ -321,6 +358,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
         }
 
         public void RemoveCallbacks(IPlayerActionMapActions instance)
@@ -346,5 +386,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnMoveCameraX(InputAction.CallbackContext context);
         void OnMoveCameraY(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
