@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 1998790782131026772}
   - component: {fileID: 1998790782131026775}
   - component: {fileID: 3193911634214483828}
+  - component: {fileID: 5571163325963875850}
   - component: {fileID: 4926723777979194739}
   m_Layer: 0
   m_Name: Player
@@ -194,6 +195,18 @@ MonoBehaviour:
   runningSpeed: 15
   jumpSpeed: 10
   gravity: 20
+--- !u!114 &5571163325963875850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998790782131026773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 922fe3ee50ab0204ea2c85d8180b106c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   playerCamera: {fileID: 9112729029882513602}
   lookSpeed: 0.2
   lookXLimit: 89
@@ -367,8 +380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61b50a3ba332e4469a0bdf62fb93677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothing: 20
-  swayMultiplier: 0.7
+  smoothing: 6
+  swayMultiplier: 1
 --- !u!1001 &6336508389580354398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -377,21 +390,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 446127363985427858}
     m_Modifications:
-    - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.38379478
-      objectReference: {fileID: 0}
-    - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.7590002
-      objectReference: {fileID: 0}
-    - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.6773429
-      objectReference: {fileID: 0}
     - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
         type: 3}
       propertyPath: m_LocalRotation.x

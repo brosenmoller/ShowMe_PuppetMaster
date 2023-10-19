@@ -13,14 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 8.0f;
     [SerializeField] private float gravity = 20.0f;
 
-    [Header("Camera Settings")]
-    [SerializeField] private Transform playerCamera;
-    [SerializeField] private float lookSpeed = 0.2f;
-    [SerializeField] private float lookXLimit = 45.0f;
-
     private CharacterController characterController;
     private Vector3 moveDirection = Vector3.zero;
-    private float rotationX = 0;
 
     public void SetCanMove(bool value) => canMove = value;
 
@@ -33,16 +27,11 @@ public class PlayerMovement : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         inputService = ServiceLocator.Instance.Get<InputService>();
-
-        // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     private void Update()
     {
         HorizontalMovement();
-        UpdateCamera();
     }
 
     private void HorizontalMovement()
@@ -78,16 +67,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         characterController.Move(moveDirection * Time.deltaTime);
-    }
-
-    private void UpdateCamera()
-    {
-        if (!canMove) { return; }
-
-        rotationX += -inputService.playerInputActions.PlayerActionMap.MoveCameraY.ReadValue<float>() * lookSpeed;
-        rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-        playerCamera.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, inputService.playerInputActions.PlayerActionMap.MoveCameraX.ReadValue<float>() * lookSpeed, 0);
     }
 
     public void WarpPlayer(Vector3 warpLocation)
