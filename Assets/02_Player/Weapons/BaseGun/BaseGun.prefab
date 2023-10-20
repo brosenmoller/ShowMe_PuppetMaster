@@ -245,10 +245,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  fireRate: 2
-  bulletSpeed: 300
+  shotDelay: 0.2
+  bulletSpeed: 100
+  maxRoundSize: 10
+  reloadTime: 0.5
   canAim: 1
   aimAnimationDurattion: 0.2
+  automaticReload: 1
+  automaticFire: 1
   bulletPrefab: {fileID: 1401066923136510641, guid: baa6b2ec39511004b8ca7ed0f1dd8ec7,
     type: 3}
   bulletSpawnPoint: {fileID: 8880061874009234893}
+  OnReload:
+    m_PersistentCalls:
+      m_Calls: []
+  OnShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCurrentRoundChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SetText, Assembly-CSharp
+        m_MethodName: SetInt
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
