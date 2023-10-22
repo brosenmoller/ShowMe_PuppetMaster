@@ -6,21 +6,26 @@ using UnityEngine.InputSystem;
 public class Gun : MonoBehaviour
 {
     [Header("Gun Stats")]
-    [SerializeField] private float damage = 10f;
-    [SerializeField] private float shotDelay;
-    [SerializeField] private float bulletSpeed;
-    [SerializeField] private int maxRoundSize;
-    [SerializeField] private float reloadTime;
+    [SerializeField] private float shotDelay = 0.1f;
+    [SerializeField] private float bulletSpeed = 200;
+    [SerializeField] private int maxRoundSize = 6;
+    [SerializeField] private float reloadTime = 0.3f;
+    [SerializeField] private float defaultMaxRandomOffset = 0.1f;
+    [SerializeField] private float aimMaxRandomOffset = 0.05f;
+    [SerializeField] private float gunKnockBack = 5f;
+    [SerializeField] private float gunKnockAirMultiplier = 2f;
 
     [Header("Gun Settings")]
-    [SerializeField] private bool canAim;
-    [SerializeField] private float aimAnimationDurattion;
-    [SerializeField] private bool automaticReload;
-    [SerializeField] private bool automaticFire;
+    [SerializeField] private bool canAim = true;
+    [SerializeField] private float aimAnimationDurattion = 0.2f;
+    [SerializeField] private bool automaticReload = true;
+    [SerializeField] private bool automaticFire = true;
 
     [Header("References")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
+    private Rigidbody playerRigidBody;
+    private PlayerPhysicsMovement playerPhysics;
 
     [Header("Events")]
     [SerializeField] private UnityEvent OnReload;
@@ -37,7 +42,11 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
+        playerPhysics = FindObjectOfType<PlayerPhysicsMovement>();
+        playerRigidBody = playerPhysics.gameObject.GetComponent<Rigidbody>();
+
         currentRoundSize = maxRoundSize;
+        OnCurrentRoundChange?.Invoke(currentRoundSize);
 
         inputService = ServiceLocator.Instance.Get<InputService>();
 
@@ -93,6 +102,10 @@ public class Gun : MonoBehaviour
 
             OnShoot?.Invoke();
             OnCurrentRoundChange?.Invoke(currentRoundSize);
+
+            Vector3 knockBackForce = -1f * gunKnockBack * bulletSpawnPoint.forward;
+            if (!playerPhysics.IsGrounded) { knockBackForce *= gunKnockAirMultiplier; }
+            playerRigidBody.AddForce(knockBackForce, ForceMode.Impulse);
 
             GameObject newBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             newBullet.GetComponent<Bullet>().Setup(bulletSpeed);

@@ -31,10 +31,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        HorizontalMovement();
+        Movement();
     }
 
-    private void HorizontalMovement()
+    private void Movement()
     {
         if (!canMove) { return; }
 
