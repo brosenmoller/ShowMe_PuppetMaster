@@ -23,7 +23,7 @@ public class PlayerPhysicsMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private Transform cameraTransform;
 
-    private bool isGrounded;
+    public bool isGrounded;
     private bool wasGrounded;
 
     private float groundTimer;
@@ -33,7 +33,7 @@ public class PlayerPhysicsMovement : MonoBehaviour
     private Vector2 inputDirection = Vector2.zero;
     private Vector3 moveDirection = Vector3.zero;
 
-    private Rigidbody rigidBody;
+    [HideInInspector] public Rigidbody rigidBody;
     private InputService inputService;
 
     private void Start()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Raft : MonoBehaviour
+public class PositionBasedRaftMovement : MonoBehaviour
 {
     [Header("Raft Settings")]
     [SerializeField] private float moveSpeed = 6f;
@@ -13,6 +13,8 @@ public class Raft : MonoBehaviour
 
     private PlayerPhysicsMovement player;
     private Rigidbody rigidBody;
+
+    private Vector3 lastFrameVelocity;
 
     private void Awake()
     {
@@ -30,6 +32,8 @@ public class Raft : MonoBehaviour
     {
         if (!player.IsGrounded) { return; }
 
+        bool collided = true;
+
         if (forwardButton.bounds.Contains(player.transform.position))
         {
             rigidBody.AddForce(10f * moveSpeed * Vector3.forward);
@@ -45,6 +49,16 @@ public class Raft : MonoBehaviour
         else if (leftButton.bounds.Contains(player.transform.position))
         {
             rigidBody.AddForce(10f * moveSpeed * Vector3.left);
+        }
+        else
+        {
+            collided = false;
+        }
+
+        if (collided)
+        {
+            player.rigidBody.velocity += rigidBody.velocity - lastFrameVelocity;
+            lastFrameVelocity = rigidBody.velocity;
         }
     }
 

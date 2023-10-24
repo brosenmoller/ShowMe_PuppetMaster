@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5645849901211666048}
   - component: {fileID: 2736389532389679726}
+  - component: {fileID: 3316555465804102089}
+  - component: {fileID: 4741605572259090737}
   - component: {fileID: 242994130548739698}
   - component: {fileID: 4040336184265294180}
   - component: {fileID: 2675958977287298827}
@@ -59,6 +61,36 @@ MonoBehaviour:
   jumpDelay: 0.15
   groundDelay: 0.15
   cameraTransform: {fileID: 0}
+--- !u!114 &3316555465804102089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314757607244694346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5269715d28122ad418c735d1eb05bbd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  playerInventoryUIView: {fileID: 0}
+--- !u!114 &4741605572259090737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2314757607244694346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e0ca58fc3aea645bafd3cb28d461a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiInteractionDescText: {fileID: 0}
+  uiBlockDescText: {fileID: 0}
+  lookRange: 5
+  canInteract: 1
 --- !u!54 &242994130548739698
 Rigidbody:
   m_ObjectHideFlags: 0

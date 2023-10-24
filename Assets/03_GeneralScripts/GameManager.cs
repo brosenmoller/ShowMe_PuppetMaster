@@ -35,4 +35,9 @@ public class GameManager : MonoBehaviour
     {
         serviceLocator.FixedUpdate();
     }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

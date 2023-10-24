@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ServiceLocator : IServiceLocator
@@ -11,11 +12,12 @@ public class ServiceLocator : IServiceLocator
 
     public ServiceLocator()
     {
-        if (Instance != null)
-        {
-            Debug.LogWarning("Other instance of a service locator already exists.");
-            return;
-        }
+        //if (Instance != null)
+        //{
+        //    Debug.LogWarning("Other instance of a service locator already exists.");
+            
+        //    return;
+        //}
         Instance = this;
     }
 

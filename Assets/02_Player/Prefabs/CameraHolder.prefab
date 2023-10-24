@@ -458,7 +458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89b54131f6646044a22eb1d8b080ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
   shotDelay: 0.2
   bulletSpeed: 200
   maxRoundSize: 10
@@ -471,10 +470,10 @@ MonoBehaviour:
   aimAnimationDurattion: 0.2
   automaticReload: 1
   automaticFire: 1
+  requireGroundedForReload: 1
   bulletPrefab: {fileID: 1401066923136510641, guid: baa6b2ec39511004b8ca7ed0f1dd8ec7,
     type: 3}
   bulletSpawnPoint: {fileID: 1032723871766049630}
-  playerRigidBody: {fileID: 0}
   OnReload:
     m_PersistentCalls:
       m_Calls: []
@@ -504,16 +503,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7045740260916392192}
     m_Modifications:
-    - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 789370222318699716, guid: 7295260d59c70fc4dbb633ce94122ef5,
         type: 3}
       propertyPath: m_LocalPosition.z
