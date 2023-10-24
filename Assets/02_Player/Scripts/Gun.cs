@@ -20,6 +20,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private float aimAnimationDurattion = 0.2f;
     [SerializeField] private bool automaticReload = true;
     [SerializeField] private bool automaticFire = true;
+    [SerializeField] private bool requireGroundedForReload = true;
 
     [Header("References")]
     [SerializeField] private GameObject bulletPrefab;
@@ -127,6 +128,8 @@ public class Gun : MonoBehaviour
 
     private void Reload()
     {
+        if (!playerPhysics.IsGrounded && requireGroundedForReload) { return; }
+
         currentRoundSize = maxRoundSize;
 
         OnReload?.Invoke();
