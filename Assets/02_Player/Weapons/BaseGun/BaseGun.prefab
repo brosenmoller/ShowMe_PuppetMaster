@@ -499,8 +499,8 @@ MonoBehaviour:
   bulletSpeed: 200
   maxRoundSize: 10
   reloadTime: 0.5
-  defaultMaxRandomOffset: 0.1
-  aimMaxRandomOffset: 0.05
+  defaultMaxRandomOffset: 2
+  aimMaxRandomOffset: 0.5
   gunKnockBack: 2
   gunKnockAirMultiplier: 2
   canAim: 1

@@ -10,8 +10,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private float bulletSpeed = 200;
     [SerializeField] private int maxRoundSize = 6;
     [SerializeField] private float reloadTime = 0.3f;
-    [SerializeField] private float defaultMaxRandomOffset = 0.1f;
-    [SerializeField] private float aimMaxRandomOffset = 0.05f;
+    [SerializeField] private float defaultMaxRandomOffset = 3f;
+    [SerializeField] private float aimMaxRandomOffset = 1f;
     [SerializeField] private float gunKnockBack = 5f;
     [SerializeField] private float gunKnockAirMultiplier = 2f;
 
@@ -26,7 +26,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
     private Rigidbody playerRigidBody;
-    private PlayerPhysicsMovement playerPhysics;
+    private PlayerMovement playerPhysics;
 
     [Header("Events")]
     [SerializeField] private UnityEvent OnReload;
@@ -39,11 +39,15 @@ public class Gun : MonoBehaviour
     private Vector3 aimPosition;
 
     private int currentRoundSize;
-    private bool isShooting;
+    private bool isShooting = false;
+    private bool isAiming = false;
+
+    private Coroutine aimCoroutine;
+    private Coroutine shootCoroutine;
 
     private void Start()
     {
-        playerPhysics = FindObjectOfType<PlayerPhysicsMovement>();
+        playerPhysics = FindObjectOfType<PlayerMovement>();
         playerRigidBody = playerPhysics.gameObject.GetComponent<Rigidbody>();
 
         currentRoundSize = maxRoundSize;
@@ -80,13 +84,25 @@ public class Gun : MonoBehaviour
     private void StartShooting(InputAction.CallbackContext callbackContext)
     {
         isShooting = true;
-        StartCoroutine(ShootCoroutine());
+        shootCoroutine = StartCoroutine(ShootCoroutine());
     }
 
     private void CancelShooting(InputAction.CallbackContext callbackContext)
     {
-        StopAllCoroutines();
+        if (shootCoroutine != null) { StopCoroutine(shootCoroutine); };
         isShooting = false;
+    }
+
+    private Quaternion GetRandomRotation(float maxOffset)
+    {
+        return Quaternion.Euler(
+            bulletSpawnPoint.rotation.eulerAngles + 
+            new Vector3(
+                Random.Range(-maxOffset, maxOffset),
+                Random.Range(-maxOffset, maxOffset),
+                Random.Range(-maxOffset, maxOffset)
+            )
+        );
     }
 
     private IEnumerator ShootCoroutine()
@@ -108,7 +124,11 @@ public class Gun : MonoBehaviour
             if (!playerPhysics.IsGrounded) { knockBackForce *= gunKnockAirMultiplier; }
             playerRigidBody.AddForce(knockBackForce, ForceMode.Impulse);
 
-            GameObject newBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            GameObject newBullet = Instantiate(
+                bulletPrefab, 
+                bulletSpawnPoint.position, 
+                isAiming ? GetRandomRotation(aimMaxRandomOffset) : GetRandomRotation(defaultMaxRandomOffset)
+            );
             newBullet.GetComponent<Bullet>().Setup(bulletSpeed);
 
             if (!automaticFire) 
@@ -138,14 +158,16 @@ public class Gun : MonoBehaviour
 
     private void AimCancel(InputAction.CallbackContext callbackContext)
     {
-        StopAllCoroutines();
-        StartCoroutine(MoveGun(defatultPosition));
+        isAiming = false;
+        if (aimCoroutine != null) { StopCoroutine(aimCoroutine); }
+        aimCoroutine = StartCoroutine(MoveGun(defatultPosition));
     }
 
     private void AimStart(InputAction.CallbackContext callbackContext)
     {
-        StopAllCoroutines();
-        StartCoroutine(MoveGun(aimPosition));
+        isAiming = true;
+        if (aimCoroutine != null) { StopCoroutine(aimCoroutine); }
+        aimCoroutine = StartCoroutine(MoveGun(aimPosition));
     }
 
     private IEnumerator MoveGun(Vector3 targetPosition)

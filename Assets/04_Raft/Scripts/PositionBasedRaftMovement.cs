@@ -11,14 +11,12 @@ public class PositionBasedRaftMovement : MonoBehaviour
     [SerializeField] private Collider rightButton; 
     [SerializeField] private Collider leftButton; 
 
-    private PlayerPhysicsMovement player;
+    private PlayerMovement player;
     private Rigidbody rigidBody;
-
-    private Vector3 lastFrameVelocity;
 
     private void Awake()
     {
-        player = FindObjectOfType<PlayerPhysicsMovement>();
+        player = FindObjectOfType<PlayerMovement>();
         rigidBody = GetComponent<Rigidbody>();
     }
 
@@ -57,8 +55,7 @@ public class PositionBasedRaftMovement : MonoBehaviour
 
         if (collided)
         {
-            player.rigidBody.velocity += rigidBody.velocity - lastFrameVelocity;
-            lastFrameVelocity = rigidBody.velocity;
+            player.rigidBody.AddForce(rigidBody.velocity);
         }
     }
 
@@ -75,7 +72,7 @@ public class PositionBasedRaftMovement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.TryGetComponent(out PlayerPhysicsMovement playerPhysicsMovement);
+        collision.gameObject.TryGetComponent(out PlayerMovement playerPhysicsMovement);
         if (playerPhysicsMovement != null)
         {
             playerPhysicsMovement.transform.parent = transform;
@@ -84,7 +81,7 @@ public class PositionBasedRaftMovement : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        collision.gameObject.TryGetComponent(out PlayerPhysicsMovement playerPhysicsMovement);
+        collision.gameObject.TryGetComponent(out PlayerMovement playerPhysicsMovement);
         if (playerPhysicsMovement != null)
         {
             playerPhysicsMovement.transform.parent = null;

@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 12
-  groundDrag: 2
+  groundDrag: 5
   jumpForce: 12
   airMultiplier: 0.4
   groundLayers:
@@ -61,6 +61,8 @@ MonoBehaviour:
   jumpDelay: 0.15
   groundDelay: 0.15
   cameraTransform: {fileID: 0}
+  isGrounded: 0
+  rigidBody: {fileID: 0}
 --- !u!114 &3316555465804102089
 MonoBehaviour:
   m_ObjectHideFlags: 0

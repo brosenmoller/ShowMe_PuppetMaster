@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     [SerializeField] private int damage;
     [SerializeField] private float radius;
+    [SerializeField] private LayerMask layerMask;
 
     private float bulletSpeed;
 
@@ -26,12 +27,9 @@ public class Bullet : MonoBehaviour
 
     private void CheckForCollisions()
     {
-        if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, bulletSpeed * Time.deltaTime))
+        if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, bulletSpeed * Time.deltaTime, layerMask))
         {
-            hit.transform.TryGetComponent(out IDamageAble damageAble);
-            damageAble?.TakeDamage(damage);
-
-            Destroy(gameObject);
+            SendDamage(hit.transform);
         }
     }
 
@@ -39,14 +37,19 @@ public class Bullet : MonoBehaviour
     {
         int maxColliders = 10;
         Collider[] hitColliders = new Collider[maxColliders];
-        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, 0.1f, hitColliders);
+        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, 0.1f, hitColliders, layerMask);
 
         for (int i = 0; i < numColliders; i++)
         {
-            hitColliders[i].transform.TryGetComponent(out IDamageAble damageAble);
-            damageAble?.TakeDamage(damage);
-
-            Destroy(gameObject);
+            SendDamage(hitColliders[i].transform);
         }
+    }
+
+    private void SendDamage(Transform hit)
+    {
+        hit.TryGetComponent(out IDamageAble damageAble);
+        damageAble?.TakeDamage(damage);
+
+        Destroy(gameObject);
     }
 }

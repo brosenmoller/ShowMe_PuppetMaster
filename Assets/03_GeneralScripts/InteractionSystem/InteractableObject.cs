@@ -7,6 +7,7 @@ public abstract class InteractableObject : MonoBehaviour
     [Header("Base Interactable Object Settings")]
     public string interactionDescription;
     public string lockedDescription;
+    [SerializeField] private bool outlineEnabled = true;
     [SerializeField] protected bool _isInteractable = true;
 
     public bool IsInteractable {
@@ -20,6 +21,8 @@ public abstract class InteractableObject : MonoBehaviour
     private Outline outline;
     protected PlayerInventory playerInventory;
     protected PlayerInteractionDetector playerInteractionDetector;
+
+    private bool hasEntered = true;
 
     public void OnInteract()
     {
@@ -48,19 +51,25 @@ public abstract class InteractableObject : MonoBehaviour
 
     public void Highlight()
     {
-        if (IsInteractable)
-        {
-            outline.enabled = true;
-        }
+        if (!IsInteractable || hasEntered) { return; }
+
+        if (outlineEnabled) { outline.enabled = true; }
+        hasEntered = true;
+        OnEnter();
     }
+
+    protected virtual void OnEnter() { }
 
     public void RemoveHighlight()
     {
-        if (IsInteractable)
-        {
-            outline.enabled = false;
-        }
+        if (!IsInteractable || !hasEntered) { return; }
+
+        if (outlineEnabled) { outline.enabled = false; }
+        hasEntered = false;
+        OnExit();
     }
+
+    protected virtual void OnExit() { }
 
     public void SetInteractableState(bool state)
     {

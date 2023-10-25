@@ -5,7 +5,6 @@ public class StickRaftMovement : MonoBehaviour
 {
     [Header("Raft Settings")]
     [SerializeField] private float moveSpeed = 12f;
-    [SerializeField] private float drag = 1f;
     [SerializeField] private bool jumpToDisconnect;
 
     [Header("References")]
@@ -18,12 +17,12 @@ public class StickRaftMovement : MonoBehaviour
 
     private Rigidbody rigidBody;
     private InputService inputService;
-    private PlayerPhysicsMovement playerPhysicsMovement;
+    private PlayerMovement playerPhysicsMovement;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody>();
-        playerPhysicsMovement = FindObjectOfType<PlayerPhysicsMovement>();
+        playerPhysicsMovement = FindObjectOfType<PlayerMovement>();
     }
 
     private void Start()

@@ -1,77 +1,116 @@
 using UnityEngine;
 
-/* Base of the PlayerController is from https://sharpcoderblog.com/blog/unity-3d-fps-controller.
- * Edited for use in this project. */
-
-[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public bool canMove = true;
-    [SerializeField] private float walkingSpeed = 7.5f;
-    [SerializeField] private float runningSpeed = 11.5f;
-    [SerializeField] private float jumpSpeed = 8.0f;
-    [SerializeField] private float gravity = 20.0f;
+    public void SetCanMove(bool value) => canMove = value;
+    public bool IsMoving { get { return inputDirection != Vector2.zero && canMove; } }
+    public bool IsGrounded { get { return isGrounded; } }
 
-    private CharacterController characterController;
+    [Header("Horizontal Movement")]
+    [SerializeField] private float moveSpeed = 12f;
+    [SerializeField] private float groundDrag = 1f;
+
+    [Header("Vertical Movement")]
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float airMultiplier = 0.4f;
+
+    [Header("Ground Check")]
+    [SerializeField] private LayerMask groundLayers;
+    [SerializeField] private float playerHeight = 2f;
+    [SerializeField] private float jumpDelay = 0.15f;
+    [SerializeField] private float groundDelay = 0.15f;
+
+    [Header("References")]
+    [SerializeField] private Transform cameraTransform;
+
+    public bool isGrounded;
+    private bool wasGrounded;
+
+    private float groundTimer;
+    private float jumpTimer;
+
+    private bool canMove = true;
+    private Vector2 inputDirection = Vector2.zero;
     private Vector3 moveDirection = Vector3.zero;
 
-    public void SetCanMove(bool value) => canMove = value;
-
-    public bool IsMoving { private set; get; } = false;
-    public bool IsSprinting { private set; get; } = false;
-
+    [HideInInspector] public Rigidbody rigidBody;
     private InputService inputService;
 
     private void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        rigidBody = GetComponent<Rigidbody>();
         inputService = ServiceLocator.Instance.Get<InputService>();
     }
 
     private void Update()
     {
-        Movement();
+        Input();
+
+        wasGrounded = isGrounded;
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + .2f, groundLayers);
+
+        if (wasGrounded && !isGrounded)
+        {
+            groundTimer = Time.time + groundDelay;
+            wasGrounded = false;
+        }
+
+        if (isGrounded) { rigidBody.drag = groundDrag; }
+        else { rigidBody.drag = 0; }
+
+        SpeedControl();
     }
 
-    private void Movement()
+    private void FixedUpdate()
+    {
+        HorizontalMovement();
+
+        if (jumpTimer > Time.time && (groundTimer > Time.time || isGrounded))
+        {
+            jumpTimer = 0;
+            groundTimer = 0;
+            Jump();
+        }
+    }
+
+    private void Input()
+    {
+        inputDirection = inputService.playerInputActions.PlayerActionMap.Walk.ReadValue<Vector2>();
+
+        if (inputService.playerInputActions.PlayerActionMap.Jump.IsPressed())
+        {
+            jumpTimer = Time.time + jumpDelay;
+        }
+    }
+
+    private void HorizontalMovement()
     {
         if (!canMove) { return; }
 
-        Vector2 inputDirection = inputService.playerInputActions.PlayerActionMap.Walk.ReadValue<Vector2>();
-        
-        if (inputDirection != Vector2.zero) { IsMoving = true; }
-        else { IsMoving = false; }
+        moveDirection = cameraTransform.forward * inputDirection.y + cameraTransform.right * inputDirection.x;
 
-        IsSprinting = inputService.playerInputActions.PlayerActionMap.Sprint.IsPressed();
-        float forwardSpeed = (IsSprinting ? runningSpeed : walkingSpeed) * inputDirection.y;
-        float rightSpeed = (IsSprinting ? runningSpeed : walkingSpeed) * inputDirection.x;
-        float movementDirectionY = moveDirection.y;
-        moveDirection = (transform.forward * forwardSpeed) + (transform.right * rightSpeed);
+        Vector3 moveForce = 10f * moveSpeed * moveDirection.normalized;
+        if (!isGrounded) { moveForce *= airMultiplier; }
 
-        if (inputService.playerInputActions.PlayerActionMap.Jump.WasPressedThisFrame() && canMove && characterController.isGrounded)
-        {
-            moveDirection.y = jumpSpeed;
-        }
-        else
-        {
-            moveDirection.y = movementDirectionY;
-        }
-
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
-
-        characterController.Move(moveDirection * Time.deltaTime);
+        rigidBody.AddForce(moveForce, ForceMode.Force);
     }
 
-    public void WarpPlayer(Vector3 warpLocation)
+    private void SpeedControl()
     {
-        transform.position = warpLocation;
-        Physics.SyncTransforms();
+        Vector3 flatVelocity = new(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
+
+        if (flatVelocity.magnitude > moveSpeed)
+        {
+            Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
+            rigidBody.velocity = new Vector3(limitedVelocity.x, rigidBody.velocity.y, limitedVelocity.z);
+        }
+    }
+
+    private void Jump()
+    {
+        if (!canMove) { return; }
+
+        rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0f, rigidBody.velocity.z);
+        rigidBody.AddForce(transform.up * jumpForce, ForceMode.Impulse);
     }
 }

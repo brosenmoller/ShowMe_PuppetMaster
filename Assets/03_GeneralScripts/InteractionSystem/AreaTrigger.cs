@@ -28,7 +28,7 @@ public class AreaTrigger : MonoBehaviour
     {
         if (disabled) { return; }
 
-        if (other.gameObject.TryGetComponent(out PlayerPhysicsMovement playerMovement))
+        if (other.gameObject.TryGetComponent(out PlayerMovement playerMovement))
         {
             OnEntered?.Invoke();
 
@@ -40,7 +40,7 @@ public class AreaTrigger : MonoBehaviour
     {
         if (disabled) { return; }
 
-        if (other.gameObject.TryGetComponent(out PlayerPhysicsMovement playerMovement))
+        if (other.gameObject.TryGetComponent(out PlayerMovement playerMovement))
         {
             OnExited?.Invoke();
         }
