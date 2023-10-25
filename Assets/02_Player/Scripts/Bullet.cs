@@ -6,7 +6,6 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float radius;
     [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float lifeTime;
 
     private float bulletSpeed;
 
@@ -18,7 +17,6 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         CheckIfSpawnedInsideCollider();
-        Destroy(gameObject, lifeTime);
     }
 
     private void Update()
