@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class Target : MonoBehaviour, IDamageAble
+public class Enemy : MonoBehaviour, IDamageAble
 {
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private float flashDuration = 0.1f;

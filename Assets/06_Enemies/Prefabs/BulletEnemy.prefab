@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3182474665660531080}
   - component: {fileID: 9058887582568296235}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 1401066923136510641}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.393, y: 4, z: 7.7}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: 5.393, y: 4.007, z: 7.813}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   radius: 0.1
-  damageAbleTag: Enemy
+  damageAbleTag: Player
+  lifeTime: 20
 --- !u!33 &3182474665660531080
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -56,7 +57,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1401066923136510641}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &9058887582568296235
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77,7 +78,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b9e706f3c43d1e947b4df9b61f472019, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

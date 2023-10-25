@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour
     [Header("Bullet Settings")]
     [SerializeField] private int damage;
     [SerializeField] private float radius;
+    [SerializeField] private string damageAbleTag;
+    [SerializeField] private float lifeTime;
 
     private float bulletSpeed;
 
@@ -16,6 +18,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         CheckIfSpawnedInsideCollider();
+        Destroy(gameObject, lifeTime);
     }
 
     private void Update()
@@ -29,7 +32,10 @@ public class Bullet : MonoBehaviour
         if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, bulletSpeed * Time.deltaTime))
         {
             hit.transform.TryGetComponent(out IDamageAble damageAble);
-            damageAble?.TakeDamage(damage);
+            if (hit.transform.gameObject.CompareTag(damageAbleTag))
+            {
+                damageAble?.TakeDamage(damage);
+            }
 
             Destroy(gameObject);
         }
