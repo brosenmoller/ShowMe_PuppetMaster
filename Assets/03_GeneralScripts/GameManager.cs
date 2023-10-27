@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private void ServiceSetup()
     {
         serviceLocator.Add(new InputService());
+        serviceLocator.Add(new TimerService());
     }
 
     private void OnEnable()
