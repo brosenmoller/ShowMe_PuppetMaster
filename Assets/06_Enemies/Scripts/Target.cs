@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(MeshRenderer))]
 public class Target : MonoBehaviour, IDamageAble
@@ -10,6 +11,9 @@ public class Target : MonoBehaviour, IDamageAble
     private int health;
     private Material defaultMaterial;
     private MeshRenderer meshRenderer;
+
+    public bool IsAlive { get { return health > 0; } }
+    public UnityEvent OnDeath;
 
     private void Awake()
     {
@@ -24,6 +28,7 @@ public class Target : MonoBehaviour, IDamageAble
 
         if (health <= 0)
         {
+            OnDeath.Invoke();
             Destroy(gameObject);
         }
         else
