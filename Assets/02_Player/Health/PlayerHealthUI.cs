@@ -13,8 +13,8 @@ public class PlayerHealthUI : MonoBehaviour
     [Header("Heart Instantiate")]
     [SerializeField] private float timeBetweenInstantiates;
 
-    private List<GameObject> currentFullHearts = new List<GameObject>();
-    private List<GameObject> currentEmptyHearts = new List<GameObject>();
+    private readonly List<GameObject> currentFullHearts = new();
+    private readonly List<GameObject> currentEmptyHearts = new();
 
     private PlayerHealth player;
 
