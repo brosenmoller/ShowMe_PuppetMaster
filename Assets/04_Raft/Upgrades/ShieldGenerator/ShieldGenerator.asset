@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Shield
   prefab: {fileID: 8874906011414138833, guid: c0bfc556fba6d2d4b9f64a2770fddafb, type: 3}
-  spawnOffset: {x: 0, y: -0.6, z: 0}
+  spawnOffset: {x: 0, y: -0.6, z: -0.2}
