@@ -12,14 +12,31 @@ public class RaftUpgradeSlot : InteractableObject
         upgradeHolder = FindObjectOfType<PlayerRaftUpgradeHolder>();
     }
 
+    private void FixedUpdate()
+    {
+        if (currentRaftUpgarde != null && upgradeHolder.currentHeldRaftUpgrade == null)
+        {
+            interactionDescription = $"Pick up {currentRaftUpgarde.upgradeName}";
+        }
+        else if (currentRaftUpgarde == null && upgradeHolder.currentHeldRaftUpgrade != null)
+        {
+            interactionDescription = $"Place {upgradeHolder.currentHeldRaftUpgrade.upgradeName}";
+        }
+        else
+        {
+            interactionDescription = "";
+        }
+    }
+
     public override bool CheckIfLocked()
     {
-        return upgradeHolder.currentHeldRaftUpgrade == null || currentRaftUpgarde == null;
+        return true;
+        //return upgradeHolder.currentHeldRaftUpgrade == null || currentRaftUpgarde == null;
     }
 
     protected override void PerformInteraction()
     {
-        if (currentRaftUpgarde != null)
+        if (currentRaftUpgarde != null && upgradeHolder.currentHeldRaftUpgrade == null)
         {
             Destroy(spawnedObject);
             upgradeHolder.currentHeldRaftUpgrade = currentRaftUpgarde;
@@ -27,12 +44,12 @@ public class RaftUpgradeSlot : InteractableObject
             return;
         }
 
-        if (upgradeHolder.currentHeldRaftUpgrade != null) 
+        if (currentRaftUpgarde == null && upgradeHolder.currentHeldRaftUpgrade != null) 
         {
             currentRaftUpgarde = upgradeHolder.currentHeldRaftUpgrade;
             upgradeHolder.currentHeldRaftUpgrade = null;
             spawnedObject = Instantiate(currentRaftUpgarde.prefab, transform);
-            spawnedObject.transform.localPosition = Vector3.zero;
+            spawnedObject.transform.localPosition = currentRaftUpgarde.spawnOffset;
         }
     }
 }

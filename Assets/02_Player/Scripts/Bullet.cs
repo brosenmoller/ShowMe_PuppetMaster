@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
 
     private void CheckForCollisions()
     {
-        if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, bulletSpeed * Time.deltaTime, layerMask))
+        if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, bulletSpeed * Time.deltaTime, layerMask, QueryTriggerInteraction.Collide))
         {
             SendDamage(hit.transform);
         }
@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
     {
         int maxColliders = 10;
         Collider[] hitColliders = new Collider[maxColliders];
-        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, 0.1f, hitColliders, layerMask);
+        int numColliders = Physics.OverlapSphereNonAlloc(transform.position, 0.1f, hitColliders, layerMask, QueryTriggerInteraction.Collide);
 
         for (int i = 0; i < numColliders; i++)
         {

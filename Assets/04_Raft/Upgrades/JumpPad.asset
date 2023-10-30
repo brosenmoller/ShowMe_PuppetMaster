@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41fbd130d2f4a6641b25feb1c588363d, type: 3}
   m_Name: JumpPad
   m_EditorClassIdentifier: 
+  upgradeName: Jumppad
   prefab: {fileID: 1364431570067288168, guid: ee23d473255b58c4fbd674afec0aba17, type: 3}
+  spawnOffset: {x: 0, y: -0.6, z: 0}
