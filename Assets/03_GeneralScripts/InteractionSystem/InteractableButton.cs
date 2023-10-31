@@ -4,8 +4,8 @@ using UnityEngine.Events;
 public class InteractableButton : InteractableObject
 {
     [Header("Button Settings")]
-    [SerializeField] private UnityEvent OnActivated;
-    [SerializeField] private UnityEvent OnDeactivated;
+    public UnityEvent OnActivated;
+    public UnityEvent OnDeactivated;
 
     [Header("Extra Settings")]
     [SerializeField] private bool disableSwitchAfterActivation;

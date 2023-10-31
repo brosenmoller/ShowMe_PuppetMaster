@@ -9,6 +9,7 @@ public class LevelGate : MonoBehaviour
 {
     [SerializeField] private TextMeshPro enemiesLeftTxt;
     [SerializeField] private List<Target> enemies;
+    [SerializeField] private UpgradeShop upgradeShop;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class LevelGate : MonoBehaviour
 
         if (remainingEnemies == 0)
         {
+            upgradeShop.GeneratePickUps();
             gameObject.SetActive(false);
         }
     }

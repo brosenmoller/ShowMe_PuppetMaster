@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Jumppad
   prefab: {fileID: 1364431570067288168, guid: ee23d473255b58c4fbd674afec0aba17, type: 3}
+  pickUpPrefab: {fileID: 7635108449606667364, guid: 697a546f802ace041abe4559aef83796,
+    type: 3}
   spawnOffset: {x: 0, y: -0.6, z: 0}
+  healthWorth: 2

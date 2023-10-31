@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeName: Wall
   prefab: {fileID: 1364431570067288168, guid: 86dc1bdeb85af964a9e51e689893a3ab, type: 3}
+  pickUpPrefab: {fileID: 3013695964182250254, guid: 7c86b6c09dd815547a425a065b12573b,
+    type: 3}
   spawnOffset: {x: 0, y: 0, z: 0}
+  healthWorth: 1
