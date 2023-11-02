@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,7 +11,7 @@ public class UpgradeShop : MonoBehaviour
     /// <summary>
     /// Stores the generated pickups and their corresponding health worths.
     /// </summary>
-    private Dictionary<GameObject, int> pickUpsHealth = new();
+    private readonly Dictionary<GameObject, int> pickUpsHealth = new();
 
     private PlayerRaftUpgradeHolder upgradeHolder;
     private HealthDispenser healthDispenser;

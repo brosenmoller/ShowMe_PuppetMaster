@@ -29,7 +29,7 @@ public class Target : MonoBehaviour, IDamageAble
         if (health <= 0)
         {
             OnDeath.Invoke();
-            Destroy(gameObject);
+            Destroy(gameObject, .2f);
         }
         else
         {

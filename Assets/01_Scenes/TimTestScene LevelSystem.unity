@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028346, g: 0.22571373, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2044,14 +2044,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemiesLeftTxt: {fileID: 1577694842}
   enemies:
-  - {fileID: 2017270270}
-  - {fileID: 1974024611}
-  - {fileID: 1178308973}
-  - {fileID: 778221162}
   - {fileID: 2088315603}
   - {fileID: 962713033}
   - {fileID: 1938542327}
-  upgradeShop: {fileID: 0}
+  upgradeShop: {fileID: 1639671464}
 --- !u!65 &912079996
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4189,6 +4185,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9c2a07268e600b542babae3a7ea838dc, type: 2}
   - {fileID: 11400000, guid: 221954c916e3ae849a8d33838918211e, type: 2}
   - {fileID: 11400000, guid: 00bb7cd8d21daae4f80dbcf86e72939c, type: 2}
+  signTxts:
+  - {fileID: 601211276}
+  - {fileID: 1441826168}
+  - {fileID: 1022523840}
 --- !u!4 &1639671465
 Transform:
   m_ObjectHideFlags: 0
