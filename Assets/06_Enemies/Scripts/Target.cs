@@ -43,4 +43,13 @@ public class Target : MonoBehaviour, IDamageAble
     {
         meshRenderer.material = defaultMaterial;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("DeathTrigger"))
+        {
+            OnDeath.Invoke();
+            Destroy(gameObject, .2f);
+        }
+    }
 }

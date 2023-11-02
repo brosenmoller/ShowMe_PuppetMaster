@@ -36,6 +36,7 @@ public class UpgradeShop : MonoBehaviour
 
             // assign callbacks for when one of the pickups is chosen
             InteractableButton interactableButton = pickUp.GetComponent<InteractableButton>();
+            interactableButton.OnActivated = null;
             interactableButton.OnActivated.AddListener(() => { upgradeHolder.SetRaftUpgrade(upgrade); 
                 PickUpChosen(pickUp); });
         }

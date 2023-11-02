@@ -28,12 +28,6 @@ public class RaftUpgradeSlot : InteractableObject
         }
     }
 
-    public override bool CheckIfLocked()
-    {
-        return true;
-        //return upgradeHolder.currentHeldRaftUpgrade == null || currentRaftUpgarde == null;
-    }
-
     protected override void PerformInteraction()
     {
         if (currentRaftUpgarde != null && upgradeHolder.currentHeldRaftUpgrade == null)

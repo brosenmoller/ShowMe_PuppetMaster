@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
     {
         if (Physics.SphereCast(transform.position, radius, transform.forward, out RaycastHit hit, bulletSpeed * Time.deltaTime, layerMask, QueryTriggerInteraction.Collide))
         {
-            SendDamage(hit.transform);
+            AffectHit(hit.transform);
         }
     }
 
@@ -43,11 +43,11 @@ public class Bullet : MonoBehaviour
 
         for (int i = 0; i < numColliders; i++)
         {
-            SendDamage(hitColliders[i].transform);
+            AffectHit(hitColliders[i].transform);
         }
     }
 
-    private void SendDamage(Transform hit)
+    protected virtual void AffectHit(Transform hit)
     {
         hit.TryGetComponent(out IDamageAble damageAble);
         damageAble?.TakeDamage(damage);

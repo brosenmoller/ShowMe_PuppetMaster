@@ -11,6 +11,8 @@ public class PlayerCamera : MonoBehaviour
     private float rotationX = 0;
     private InputService inputService;
 
+    public bool CanMove { get; set; } = true;
+
     private void Start()
     {
         inputService = ServiceLocator.Instance.Get<InputService>();
@@ -27,6 +29,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void UpdateCamera()
     {
+        if (!CanMove) { return; }
+
         rotationX += -inputService.playerInputActions.PlayerActionMap.MoveCameraY.ReadValue<float>() * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
         playerCamera.localRotation = Quaternion.Euler(rotationX, 0, 0);

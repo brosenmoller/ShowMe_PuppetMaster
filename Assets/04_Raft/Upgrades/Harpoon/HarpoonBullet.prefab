@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1364431570067288168
+--- !u!1 &1401066923136510641
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4888806803079175705}
-  - component: {fileID: 4643406239243319817}
-  - component: {fileID: 7678153309567021151}
-  - component: {fileID: 7387248362101577621}
-  - component: {fileID: 7379914674638424873}
-  m_Layer: 3
-  m_Name: JumppadRaftUpgrade
+  - component: {fileID: 3766087953717522509}
+  - component: {fileID: 3182474665660531080}
+  - component: {fileID: 9058887582568296235}
+  - component: {fileID: 4788926802234900774}
+  m_Layer: 0
+  m_Name: HarpoonBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4888806803079175705
+--- !u!4 &3766087953717522509
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364431570067288168}
+  m_GameObject: {fileID: 1401066923136510641}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0316, y: 0.6424, z: -11.879}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 5.393, y: 4, z: 7.7}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4643406239243319817
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!33 &3182474665660531080
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364431570067288168}
-  m_Mesh: {fileID: 6456654631697911331, guid: 38cc842bd9fe8a6408f9232ab6c9beac, type: 3}
---- !u!23 &7678153309567021151
+  m_GameObject: {fileID: 1401066923136510641}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &9058887582568296235
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364431570067288168}
+  m_GameObject: {fileID: 1401066923136510641}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9e706f3c43d1e947b4df9b61f472019, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,38 +84,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7387248362101577621
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364431570067288168}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.7666572, y: 0.2930814, z: 1.6957283}
-  m_Center: {x: -0.0027343205, y: 0.10811282, z: 0.014483589}
---- !u!114 &7379914674638424873
+--- !u!114 &4788926802234900774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1364431570067288168}
+  m_GameObject: {fileID: 1401066923136510641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a526d4345d48a47b99a007a99453c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 259f651499ddf5249b31f72603b05cab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchForce: 15
-  verticalComponent: 1.5
+  damage: 10
+  radius: 0.1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 9
+  lifeTime: 30
+  pullStrength: 20
+  pullUpStrength: 5

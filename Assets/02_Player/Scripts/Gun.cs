@@ -33,6 +33,8 @@ public class Gun : MonoBehaviour
     [SerializeField] private UnityEvent OnShoot;
     [SerializeField] private UnityEvent<int> OnCurrentRoundChange;
 
+    public bool CanShoot { get; set; } = true;
+
     private InputService inputService;
 
     private Vector3 defatultPosition;
@@ -83,6 +85,8 @@ public class Gun : MonoBehaviour
 
     private void StartShooting(InputAction.CallbackContext callbackContext)
     {
+        if (!CanShoot) { return; }
+
         isShooting = true;
         shootCoroutine = StartCoroutine(ShootCoroutine());
     }
