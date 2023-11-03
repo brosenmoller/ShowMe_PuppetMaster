@@ -118,5 +118,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9a526d4345d48a47b99a007a99453c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  launchForce: 15
-  verticalComponent: 1.5
+  launchForce: 35
+  verticalComponent: 10

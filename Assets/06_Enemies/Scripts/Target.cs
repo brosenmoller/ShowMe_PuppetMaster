@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(MeshRenderer))]
 public class Target : MonoBehaviour, IDamageAble
 {
     [SerializeField] private int maxHealth = 100;
@@ -10,7 +9,7 @@ public class Target : MonoBehaviour, IDamageAble
 
     private int health;
     private Material defaultMaterial;
-    private MeshRenderer meshRenderer;
+    private MeshRenderer[] meshRenderers;
 
     public bool IsAlive { get { return health > 0; } }
     public UnityEvent OnDeath;
@@ -18,8 +17,8 @@ public class Target : MonoBehaviour, IDamageAble
     private void Awake()
     {
         health = maxHealth;
-        meshRenderer = GetComponent<MeshRenderer>();
-        defaultMaterial = meshRenderer.material;
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        defaultMaterial = meshRenderers[0].material;
     }
 
     public void TakeDamage(int damage)
@@ -34,14 +33,20 @@ public class Target : MonoBehaviour, IDamageAble
         else
         {
             CancelInvoke(nameof(ResetMaterial));
-            meshRenderer.material = whiteFlashMaterial;
+            foreach (var renderer in meshRenderers)
+            {
+                renderer.material = whiteFlashMaterial;
+            }
             Invoke(nameof(ResetMaterial), flashDuration);
         }
     }
 
     private void ResetMaterial()
     {
-        meshRenderer.material = defaultMaterial;
+        foreach (var renderer in meshRenderers)
+        {
+            renderer.material = defaultMaterial;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

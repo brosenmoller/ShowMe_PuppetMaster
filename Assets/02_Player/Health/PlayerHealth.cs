@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageAble
 {
     public int maxHealth = 4;
     [HideInInspector] public int health;
+    [SerializeField] private Transform respawnPoint;
 
     private PlayerHealthUI healthUI;
 
@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
 
         if (health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Respawn();
         }
     }
 
@@ -36,5 +36,16 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
     public void AddAdditionalHearts(int amount)
     {
         healthUI.AddAddionalHearts(amount);
+    }
+
+    public void DamageAndRespawn()
+    {
+        TakeDamage(1);
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        transform.position = respawnPoint.position;
     }
 }
