@@ -46,9 +46,7 @@ public class UpgradeShop : MonoBehaviour
     {
         foreach (GameObject pickUp in pickUpsHealth.Keys)
         {
-            // the pick ups that aren't chosen will be scrapped into health points
-            // the amount of health points is related to the pick up type
-            if (pickUp != chosenPickUp)
+            if (pickUp == chosenPickUp)
             {
                 healthDispenser.AddHealthPoints(pickUpsHealth[pickUp]);
             }
