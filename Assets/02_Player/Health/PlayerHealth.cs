@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageAble
 {
@@ -21,7 +22,7 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
 
         if (health <= 0)
         {
-            Respawn();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

@@ -2262,7 +2262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -4542,7 +4542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -6615,7 +6615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -7125,6 +7125,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124630482}
     m_Modifications:
+    - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8284,7 +8289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -8626,6 +8631,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124630482}
     m_Modifications:
+    - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8862,7 +8872,7 @@ PrefabInstance:
     - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
@@ -9226,7 +9236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -10917,6 +10927,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124630482}
     m_Modifications:
+    - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11243,6 +11258,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124630482}
     m_Modifications:
+    - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11723,7 +11743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -14152,7 +14172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -16904,6 +16924,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124630482}
     m_Modifications:
+    - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17375,7 +17400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -17632,7 +17657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -18807,6 +18832,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 124630482}
     m_Modifications:
+    - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
+        type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2216570676648144511, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: m_Size.y
@@ -19408,7 +19438,7 @@ PrefabInstance:
     - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
@@ -19983,7 +20013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -20150,7 +20180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -20788,7 +20818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:
@@ -21163,7 +21193,7 @@ PrefabInstance:
     - target: {fileID: 377492760077917143, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2637626905499764950, guid: 5f7b39dbbba5e7846bd750418c26baa4,
         type: 3}
