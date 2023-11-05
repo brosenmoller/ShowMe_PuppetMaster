@@ -17,4 +17,5 @@ MonoBehaviour:
   pickUpPrefab: {fileID: 3013695964182250254, guid: 7c86b6c09dd815547a425a065b12573b,
     type: 3}
   spawnOffset: {x: 0, y: 0, z: 0}
+  spawnScale: {x: 1, y: 1, z: 1}
   healthWorth: 1

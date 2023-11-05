@@ -111,6 +111,8 @@ MonoBehaviour:
   maxHealth: 4
   health: 0
   respawnPoint: {fileID: 0}
+  postProcessingVolume: {fileID: 11400000, guid: cfa5bbe8040f0bf47b0ff2277e4d6133,
+    type: 2}
 --- !u!114 &7101744846184893129
 MonoBehaviour:
   m_ObjectHideFlags: 0
