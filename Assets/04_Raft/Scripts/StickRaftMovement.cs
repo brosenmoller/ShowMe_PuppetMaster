@@ -83,6 +83,12 @@ public class StickRaftMovement : MonoBehaviour
         DisconnectRaft();
     }
 
+    public void ToggleRaftConnection()
+    {
+        if (controllingRaft) { DisconnectRaft(); }
+        else { ConnectRaft(); }
+    }
+
     public void DisconnectRaft()
     {
         controllingRaft = false;

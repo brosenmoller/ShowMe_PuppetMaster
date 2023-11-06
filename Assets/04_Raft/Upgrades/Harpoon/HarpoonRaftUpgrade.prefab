@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4064911884061348309}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5715148014061942566}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6900205698892554972}
   - component: {fileID: 1263869853889264960}
   - component: {fileID: 8303384838548326536}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HarpoonBoxRotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 6135183856161850877}
   - component: {fileID: 2172490797250939502}
   - component: {fileID: 8259483012969163345}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LeverHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7133305379879137715}
   - component: {fileID: 7462550787126630859}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: cm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -283,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7320498597539394798}
   - component: {fileID: 5216832776818313618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HarpoonGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 2378614252360605122}
   - component: {fileID: 396124057527391256}
   - component: {fileID: 8257252176341919750}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: HarpoonRaftUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 1404328143004671345}
   - component: {fileID: 4670826433342009397}
   - component: {fileID: 32519585902181421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HarpoonVerticalSpinAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3459985529076905695}
   - component: {fileID: 7224628770290071766}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}

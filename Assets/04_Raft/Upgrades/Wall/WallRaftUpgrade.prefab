@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4888806803079175705}
   - component: {fileID: 7387248362101577621}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallRaftUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,10 +127,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8056817917324986991, guid: 1703ab958b8f7e748b967191f56c5757,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1703ab958b8f7e748b967191f56c5757,
         type: 3}
       propertyPath: m_Name
       value: Wall_LP_OBJ
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1703ab958b8f7e748b967191f56c5757,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

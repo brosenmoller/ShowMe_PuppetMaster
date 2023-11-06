@@ -34,10 +34,12 @@ public class PlayerHealth : MonoBehaviour, IDamageAble
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
-        vignetteEffect.intensity.overrideState = true;
-        Tween.Custom(.1f, .5f, duration: .1f, onValueChange: newValue => vignetteEffect.intensity.value = newValue, ease: Ease.InSine)
-            .OnComplete(() => Tween.Custom(.5f, .1f, duration: .2f, onValueChange: newValue => vignetteEffect.intensity.value = newValue, ease: Ease.OutSine));
+        else
+        {
+            vignetteEffect.intensity.overrideState = true;
+            Tween.Custom(.1f, .5f, duration: .1f, onValueChange: newValue => vignetteEffect.intensity.value = newValue, ease: Ease.InSine)
+                .OnComplete(() => Tween.Custom(.5f, .1f, duration: .2f, onValueChange: newValue => vignetteEffect.intensity.value = newValue, ease: Ease.OutSine));
+        }
     }
 
     public void Revive(int amount)

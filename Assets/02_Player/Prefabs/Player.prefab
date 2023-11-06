@@ -59,7 +59,7 @@ MonoBehaviour:
   airMultiplier: 0.4
   groundLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   playerHeight: 2.5
   jumpDelay: 0.15
   groundDelay: 0.15

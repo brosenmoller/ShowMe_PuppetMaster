@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7678153309567021151}
   - component: {fileID: 7387248362101577621}
   - component: {fileID: 7379914674638424873}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: JumppadRaftUpgrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
