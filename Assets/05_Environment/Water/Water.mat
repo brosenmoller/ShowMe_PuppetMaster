@@ -163,8 +163,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 2
     - _ReceiveShadows: 1
-    - _RefractionAmplitude: 0.042
-    - _RefractionFrequency: 15.68
+    - _RefractionAmplitude: 0.0889
+    - _RefractionFrequency: 35.58
     - _RefractionScale: 1.83
     - _RefractionSpeed: 0.31
     - _ShadowStrength: 0.569
@@ -175,7 +175,7 @@ Material:
     - _Surface: 0
     - _WaterClearness: 0.209
     - _WaterDepth: 5
-    - _WaveAmplitude: 0.21
+    - _WaveAmplitude: 0.56
     - _WaveDirection: 0
     - _WaveFrequency: 1
     - _WaveMode: 3
@@ -194,8 +194,8 @@ Material:
         a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorDeep: {r: 0.1324314, g: 0.5849823, b: 0.6792453, a: 1}
-    - _ColorShallow: {r: 0.66512394, g: 0.7791745, b: 0.8962264, a: 0.8}
+    - _ColorDeep: {r: 0.16340327, g: 0.59540164, b: 0.764151, a: 1}
+    - _ColorShallow: {r: 0.23498866, g: 0.531378, b: 0.8396226, a: 0.8}
     - _CrestColor: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 0.9}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
