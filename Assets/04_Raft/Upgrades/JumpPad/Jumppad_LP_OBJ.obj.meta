@@ -3,7 +3,12 @@ guid: 38cc842bd9fe8a6408f9232ab6c9beac
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: JumppadMat
+    second: {fileID: 2100000, guid: 96ef956ab7da077408a9787d279190ad, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

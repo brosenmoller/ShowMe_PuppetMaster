@@ -3,7 +3,27 @@ guid: aef67c1e086cacd4cbeea9bd88cfcf55
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HarpoonBoxRotatorMat
+    second: {fileID: 2100000, guid: 5905798b9afdfe24bb1a5c01551dd42d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HarpoonProjectile_HarpoonProjectileMat
+    second: {fileID: 2100000, guid: 5905798b9afdfe24bb1a5c01551dd42d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HarpoonVerticalSpinAxisMat
+    second: {fileID: 2100000, guid: 5905798b9afdfe24bb1a5c01551dd42d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LeverHandleMat
+    second: {fileID: 2100000, guid: 5905798b9afdfe24bb1a5c01551dd42d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

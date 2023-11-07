@@ -3,7 +3,12 @@ guid: 7a76caef7fbd3484085712d9ffefe653
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HarpoonProjectile_HarpoonProjectileMat
+    second: {fileID: 2100000, guid: 5905798b9afdfe24bb1a5c01551dd42d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
