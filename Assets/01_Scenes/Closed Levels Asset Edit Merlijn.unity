@@ -30535,6 +30535,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 321124382621290152, guid: 17822826be1135a4fa1010e83f41a477,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63841b8df87419545a8533010047fc6c, type: 2}
     - target: {fileID: 535420696751387469, guid: 17822826be1135a4fa1010e83f41a477,
         type: 3}
       propertyPath: m_Name
@@ -30635,6 +30640,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2985932281712139445}
+    - target: {fileID: 6639061124400704384, guid: 17822826be1135a4fa1010e83f41a477,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 63841b8df87419545a8533010047fc6c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5526443342498310295, guid: 17822826be1135a4fa1010e83f41a477, type: 3}
