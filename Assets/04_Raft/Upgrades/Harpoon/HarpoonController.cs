@@ -53,8 +53,18 @@ public class HarpoonController : InteractableObject
 
         rotationX += -inputService.playerInputActions.PlayerActionMap.MoveCameraY.ReadValue<float>() * lookSpeed;
         rotationX = Mathf.Clamp(rotationX, lookXLimitDown, lookXLimitUp);
-        harpoonCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-        transform.localRotation *= Quaternion.Euler(0, inputService.playerInputActions.PlayerActionMap.MoveCameraX.ReadValue<float>() * lookSpeed, 0);
+        
+        harpoonCamera.transform.localRotation = Quaternion.Euler(
+            rotationX, 
+            90, 
+            harpoonCamera.transform.localRotation.z
+        );
+
+        transform.localRotation *= Quaternion.Euler(
+            transform.localRotation.x, 
+            inputService.playerInputActions.PlayerActionMap.MoveCameraX.ReadValue<float>() * lookSpeed, 
+            transform.localRotation.z
+        );
     }
 
     protected override void PerformInteraction()
