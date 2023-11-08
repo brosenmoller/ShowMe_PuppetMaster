@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 3459985529076905695}
   - component: {fileID: 7224628770290071766}
   m_Layer: 8
-  m_Name: PlayerCamera
+  m_Name: HarpoonCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
