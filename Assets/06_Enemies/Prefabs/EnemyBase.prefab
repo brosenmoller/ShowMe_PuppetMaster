@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ce067b41229fd4f8eaa0d65ca234a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   flashDuration: 0.05
   whiteFlashMaterial: {fileID: 2100000, guid: bcaab1afc1b0ae74fa9b5a5f8be55cc9, type: 2}
   OnDeath:

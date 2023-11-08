@@ -50,7 +50,7 @@ MonoBehaviour:
   radius: 0.1
   layerMask:
     serializedVersion: 2
-    m_Bits: 137
+    m_Bits: 393
   lifeTime: 30
 --- !u!33 &3182474665660531080
 MeshFilter:

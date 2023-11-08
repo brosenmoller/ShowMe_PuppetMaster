@@ -115,8 +115,12 @@ public class Gun : MonoBehaviour
         {
             if (currentRoundSize <= 0)
             {
-                if (automaticReload) { Invoke(nameof(Reload), reloadTime); }
                 yield break;
+            }
+
+            if (currentRoundSize <= 1)
+            {
+                if (automaticReload) { Invoke(nameof(Reload), reloadTime); }
             }
 
             currentRoundSize--;
