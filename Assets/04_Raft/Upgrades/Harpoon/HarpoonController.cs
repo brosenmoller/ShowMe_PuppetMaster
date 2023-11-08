@@ -8,6 +8,9 @@ public class HarpoonController : InteractableObject
     [SerializeField] private float lookXLimitUp = 45.0f;
     [SerializeField] private float lookXLimitDown = -10.0f;
 
+    [Header("References")]
+    [SerializeField] private Transform gunHolder;
+
     private bool controllingHarpoon = false;
 
     private float rotationX = 0;
@@ -55,16 +58,22 @@ public class HarpoonController : InteractableObject
         rotationX = Mathf.Clamp(rotationX, lookXLimitDown, lookXLimitUp);
         
         harpoonCamera.transform.localRotation = Quaternion.Euler(
-            rotationX, 
-            90, 
-            harpoonCamera.transform.localRotation.z
+            rotationX * -0.25f, 
+            180, 
+            0
+        );
+
+        gunHolder.localRotation = Quaternion.Euler(
+            rotationX,
+            -90,
+            0
         );
 
         transform.localRotation *= Quaternion.Euler(
-            transform.localRotation.x, 
+            0, 
             inputService.playerInputActions.PlayerActionMap.MoveCameraX.ReadValue<float>() * lookSpeed, 
-            transform.localRotation.z
-        );
+            0
+        );    
     }
 
     protected override void PerformInteraction()
