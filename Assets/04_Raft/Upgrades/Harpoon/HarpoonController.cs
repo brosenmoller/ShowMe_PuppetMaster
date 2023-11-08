@@ -58,13 +58,13 @@ public class HarpoonController : InteractableObject
         rotationX = Mathf.Clamp(rotationX, lookXLimitDown, lookXLimitUp);
         
         harpoonCamera.transform.localRotation = Quaternion.Euler(
-            rotationX * -0.25f, 
+            rotationX * 0.25f, 
             180, 
             0
         );
 
         gunHolder.localRotation = Quaternion.Euler(
-            rotationX,
+            rotationX * -1f,
             -90,
             0
         );
