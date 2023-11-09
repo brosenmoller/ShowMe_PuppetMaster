@@ -73,7 +73,7 @@ public class HarpoonController : InteractableObject
             0, 
             inputService.playerInputActions.PlayerActionMap.MoveCameraX.ReadValue<float>() * lookSpeed, 
             0
-        );    
+        );
     }
 
     protected override void PerformInteraction()
